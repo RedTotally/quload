@@ -98,7 +98,7 @@ export default function Home() {
             <img className="cursor-pointer" src="/copy.svg"></img>
           </div>
 
-          <p className="mt-10 text-center text-xs">Fun fact, QuLoad stands for "Quick Load", you know. If you&apos;re struggling with the pronunciation, just remember we&apos;re cool, so, &quot;Cool Load&quot;, get it?</p>
+          <p className="mt-10 text-center text-xs">Fun fact, QuLoad stands for &quot;Quick Load&quot;, you know. If you&apos;re struggling with the pronunciation, just remember we&apos;re cool, so, &quot;Cool Load&quot;, get it?</p>
         </div>
       </div>
     </>
