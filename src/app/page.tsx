@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center mt-[10em]">
+      <div className="flex justify-center mt-[9em]">
         <div className="lg:w-[60em] px-10">
           <p className="text-center font-semibold text-3xl lg:text-5xl">
             We Don&apos;t Upload, We{" "}
@@ -97,6 +97,8 @@ export default function Home() {
             <p>https://quload.com/{fileName}</p>
             <img className="cursor-pointer" src="/copy.svg"></img>
           </div>
+
+          <p className="mt-10 text-center text-xs">Fun fact, QuLoad stands for "Quick Load", you know. If you&apos;re struggling with the pronunciation, just remember we&apos;re cool, so, &quot;Cool Load&quot;, get it?</p>
         </div>
       </div>
     </>
