@@ -2,12 +2,7 @@
 
 import { useState } from "react";
 import { initializeApp, getApp, getApps } from "firebase/app";
-import {
-  getFirestore,
-  doc,
-  updateDoc,
-  increment,
-} from "firebase/firestore";
+import { getFirestore, doc, updateDoc, increment } from "firebase/firestore";
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
