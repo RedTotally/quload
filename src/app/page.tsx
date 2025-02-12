@@ -166,8 +166,8 @@ export default function Home() {
               <p
                 className={
                   copyPopVisibility == true
-                    ? "absolute bg-[#1F51FF] mt-[-5em] p-1 px-3 text-xs text-white rounded-lg opacity-100 duration-150"
-                    : "absolute bg-[#1F51FF] mt-[-3em] p-1 px-3 text-xs text-white rounded-lg opacity-0 cursor-default duration-150"
+                    ? "absolute bg-[#1F51FF] mt-[-7em] lg:mt-[-5em] p-1 px-3 text-xs text-white rounded-lg opacity-100 duration-150 text-center mr-2 lg:mr-0"
+                    : "absolute bg-[#1F51FF] mt-[-5em] lg:mt-[-3em] p-1 px-3 text-xs text-white rounded-lg opacity-0 cursor-default duration-150 text-center mr-2 lg:mr-0"
                 }
               >
                 Copied to Clipboard :D
