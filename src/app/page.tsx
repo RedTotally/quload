@@ -3,8 +3,7 @@
 import { useState } from "react";
 
 export default function Home() {
-
-  const [fileName, setFileName] = useState("")
+  const [fileName, setFileName] = useState("");
 
   const generateRandomString = (length: number) => {
     const characters =
@@ -23,17 +22,19 @@ export default function Home() {
       return;
     }
 
-    if (file.size > 1073741824){
+    if (file.size > 1073741824) {
       return;
     }
-    
-    const newFileName = `QuLoad_${generateRandomString(10)}.${file.name.split('.').pop()}`;
 
-    setFileName(newFileName)
+    const newFileName = `QuLoad_${generateRandomString(10)}.${file.name
+      .split(".")
+      .pop()}`;
+
+    setFileName(newFileName);
 
     const renamedFile = new File([file], newFileName, { type: file.type });
 
-    console.log(renamedFile.name)
+    console.log(renamedFile.name);
 
     const formData = new FormData();
     formData.append("file", renamedFile);
@@ -94,11 +95,19 @@ export default function Home() {
           </div>
 
           <div className="mt-5 flex justify-between items-center bg-gray-100 p-3 rounded-lg">
-            <p>https://quload.com/{fileName}</p>
+            <p>https://quload.com/file/{fileName}</p>
             <img className="cursor-pointer" src="/copy.svg"></img>
           </div>
 
-          <p className="mt-10 text-center text-xs">Fun fact, QuLoad stands for &quot;Quick Load&quot;, you know. If you&apos;re struggling with the pronunciation, just remember we&apos;re cool, so, &quot;Cool Load&quot;, get it?</p>
+          <p className="mt-10 text-center text-xs">
+            Fun fact, QuLoad stands for &quot;Quick Load&quot;, you know. If
+            you&apos;re struggling with the pronunciation, just remember
+            we&apos;re cool, so, &quot;Cool Load&quot;, get it?
+          </p>
+
+          <div className="mt-20">
+            <img className="rounded-lg cursor-pointer hover:brightness-[90%] duration-300" src="/banner.png"></img>
+          </div>
         </div>
       </div>
     </>
