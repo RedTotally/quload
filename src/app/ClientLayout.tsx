@@ -10,7 +10,7 @@ export default function ClientLayout({
   return <>
  
   {children}
-<footer className="my-[20em]">
+<footer className="my-[20em] px-10">
   <p className="text-center">© 2023 - 2025 <Link className="text-[#1F51FF]" href={"https://godotwebs.com/"}>GoDotWebs</Link></p>
 </footer>
   </>;

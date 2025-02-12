@@ -1,9 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { initializeApp, getApp, getApps } from "firebase/app";
+import {
+  getFirestore,
+  query,
+  collection,
+  where,
+  getDocs,
+  doc,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
+
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
+
+  const config = {
+    apiKey: process.env.NEXT_PUBLIC_APIKEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECTID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+    appId: process.env.NEXT_PUBLIC_APPID,
+  };
+
+  const app = getApps().length === 0 ? initializeApp(config) : getApp();
+  const db = getFirestore(app);
 
   const generateRandomString = (length: number) => {
     const characters =
@@ -16,6 +40,18 @@ export default function Home() {
     }
     return result;
   };
+
+  async function recordNumber() {
+    const docRef = doc(db, "QuLoad", "Value_Log");
+
+    updateDoc(docRef, {
+      Uploads: increment(1)
+    });
+  }
+
+  async function copyToClipboard(value: string) {
+    navigator.clipboard.writeText(value)
+  }
 
   async function upload(file: File | null) {
     if (!file) {
@@ -48,6 +84,7 @@ export default function Home() {
       if (response.ok) {
         const result = await response.json();
         console.log("Upload successful:", result);
+        recordNumber()
       } else {
         console.error("Upload failed:", response.statusText);
       }
@@ -77,7 +114,7 @@ export default function Home() {
               onChange={(event) =>
                 upload(event.target.files ? event.target.files[0] : null)
               }
-              className="bg-bla h-full w-full rounded-x-lg rounded-b-lg p-[10em] opacity-0 relative z-[50]"
+              className="h-full w-full rounded-x-lg rounded-b-lg p-[10em] opacity-0 relative z-[50] cursor-pointer"
               type="file"
             ></input>
             <div className="absolute px-20 lg:px-10">
@@ -96,7 +133,7 @@ export default function Home() {
 
           <div className="mt-5 flex justify-between items-center bg-gray-100 p-3 rounded-lg">
             <p>https://quload.com/file/{fileName}</p>
-            <img className="cursor-pointer" src="/copy.svg"></img>
+            <img onClick={() => copyToClipboard(`https://quload.com/file/${fileName}`)} className="cursor-pointer" src="/copy.svg"></img>
           </div>
 
           <p className="mt-10 text-center text-xs">
