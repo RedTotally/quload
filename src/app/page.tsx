@@ -4,15 +4,10 @@ import { useState } from "react";
 import { initializeApp, getApp, getApps } from "firebase/app";
 import {
   getFirestore,
-  query,
-  collection,
-  where,
-  getDocs,
   doc,
   updateDoc,
   increment,
 } from "firebase/firestore";
-
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
@@ -45,12 +40,12 @@ export default function Home() {
     const docRef = doc(db, "QuLoad", "Value_Log");
 
     updateDoc(docRef, {
-      Uploads: increment(1)
+      Uploads: increment(1),
     });
   }
 
   async function copyToClipboard(value: string) {
-    navigator.clipboard.writeText(value)
+    navigator.clipboard.writeText(value);
   }
 
   async function upload(file: File | null) {
@@ -84,7 +79,7 @@ export default function Home() {
       if (response.ok) {
         const result = await response.json();
         console.log("Upload successful:", result);
-        recordNumber()
+        recordNumber();
       } else {
         console.error("Upload failed:", response.statusText);
       }
@@ -133,7 +128,13 @@ export default function Home() {
 
           <div className="mt-5 flex justify-between items-center bg-gray-100 p-3 rounded-lg">
             <p>https://quload.com/file/{fileName}</p>
-            <img onClick={() => copyToClipboard(`https://quload.com/file/${fileName}`)} className="cursor-pointer" src="/copy.svg"></img>
+            <img
+              onClick={() =>
+                copyToClipboard(`https://quload.com/file/${fileName}`)
+              }
+              className="cursor-pointer"
+              src="/copy.svg"
+            ></img>
           </div>
 
           <p className="mt-10 text-center text-xs">
@@ -143,7 +144,10 @@ export default function Home() {
           </p>
 
           <div className="mt-20">
-            <img className="rounded-lg cursor-pointer hover:brightness-[90%] duration-300" src="/banner.png"></img>
+            <img
+              className="rounded-lg cursor-pointer hover:brightness-[90%] duration-300"
+              src="/banner.png"
+            ></img>
           </div>
         </div>
       </div>
