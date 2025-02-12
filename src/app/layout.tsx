@@ -10,7 +10,7 @@ const nunitoSans = Nunito_Sans({
 
 export const metadata: Metadata = {
   title: "QuLoad",
-  description: "Convert your file to a link.",
+  description: "QuLoad is an open-source file-hosting web app that hosts files, specifically images or videos and converts them to links. This allows you to use the link wherever you want with the greatest flexibility.",
   keywords: [
     "quload",
     "upload",

@@ -2,14 +2,20 @@
 
 import { use, useEffect, useState } from "react";
 import { initializeApp, getApp, getApps } from "firebase/app";
-import { getFirestore, doc, updateDoc, increment, getDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  updateDoc,
+  increment,
+  getDoc,
+} from "firebase/firestore";
 import Link from "next/link";
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
-  const [count, setCount] = useState<Number>(0)
+  const [count, setCount] = useState<Number>(0);
 
-  const [copyPopVisibility, setCopyPopVisibility] = useState(false)
+  const [copyPopVisibility, setCopyPopVisibility] = useState(false);
 
   const config = {
     apiKey: process.env.NEXT_PUBLIC_APIKEY,
@@ -46,23 +52,23 @@ export default function Home() {
   async function fetchNumber() {
     const docRef = doc(db, "QuLoad", "Value_Log");
 
-    const data = (await getDoc(docRef)).data()
+    const data = (await getDoc(docRef)).data();
 
-    if(data !== undefined){
-      setCount(data.Uploads)
+    if (data !== undefined) {
+      setCount(data.Uploads);
     }
   }
 
   useEffect(() => {
-    fetchNumber()
-  },[])
+    fetchNumber();
+  }, []);
 
   async function copyToClipboard(value: string) {
     navigator.clipboard.writeText(value);
 
-    setCopyPopVisibility(true)
+    setCopyPopVisibility(true);
     setTimeout(() => {
-      setCopyPopVisibility(false)
+      setCopyPopVisibility(false);
     }, 1000);
   }
 
@@ -121,7 +127,9 @@ export default function Home() {
           </p>
 
           <div className="mt-10 bg-[#1F51FF] rounded-t-lg p-1 px-2">
-            <p className="text-white text-sm">{count.toString()} Files Have Been Hosted</p>
+            <p className="text-white text-sm">
+              {count.toString()} Files Have Been Hosted
+            </p>
           </div>
           <div className="bg-gray-100 rounded-x-lg rounded-b-lg flex justify-center items-center">
             <input
@@ -148,14 +156,22 @@ export default function Home() {
           <div className="mt-5 flex justify-between items-center bg-gray-100 p-3 rounded-lg">
             <p>https://quload.com/file/{fileName}</p>
             <div className="flex justify-center items-center">
-            <img
-              onClick={() =>
-                copyToClipboard(`https://quload.com/file/${fileName}`)
-              }
-              className="cursor-pointer"
-              src="/copy.svg"
-            ></img>
-            <p className={copyPopVisibility == true ? "absolute bg-[#1F51FF] mt-[-5em] p-1 px-3 text-xs text-white rounded-lg opacity-100 duration-150" : "absolute bg-[#1F51FF] mt-[-3em] p-1 px-3 text-xs text-white rounded-lg opacity-0 cursor-default duration-150"}>Copied to Clipboard :D</p>
+              <img
+                onClick={() =>
+                  copyToClipboard(`https://quload.com/file/${fileName}`)
+                }
+                className="cursor-pointer"
+                src="/copy.svg"
+              ></img>
+              <p
+                className={
+                  copyPopVisibility == true
+                    ? "absolute bg-[#1F51FF] mt-[-5em] p-1 px-3 text-xs text-white rounded-lg opacity-100 duration-150"
+                    : "absolute bg-[#1F51FF] mt-[-3em] p-1 px-3 text-xs text-white rounded-lg opacity-0 cursor-default duration-150"
+                }
+              >
+                Copied to Clipboard :D
+              </p>
             </div>
           </div>
 
@@ -166,10 +182,12 @@ export default function Home() {
           </p>
 
           <div className="mt-20">
-            <Link href={"https://github.com/RedTotally/quload"}><img
-              className="rounded-lg cursor-pointer hover:brightness-[90%] duration-300"
-              src="/banner.png"
-            ></img></Link>
+            <Link href={"https://github.com/RedTotally/quload"}>
+              <img
+                className="rounded-lg cursor-pointer hover:brightness-[90%] duration-300"
+                src="/banner.png"
+              ></img>
+            </Link>
           </div>
         </div>
       </div>
