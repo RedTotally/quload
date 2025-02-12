@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initializeApp, getApp, getApps } from "firebase/app";
-import { getFirestore, doc, updateDoc, increment } from "firebase/firestore";
+import { getFirestore, doc, updateDoc, increment, getDoc } from "firebase/firestore";
+import Link from "next/link";
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
+  const [count, setCount] = useState<Number>(0)
 
   const config = {
     apiKey: process.env.NEXT_PUBLIC_APIKEY,
@@ -38,6 +40,20 @@ export default function Home() {
       Uploads: increment(1),
     });
   }
+
+  async function fetchNumber() {
+    const docRef = doc(db, "QuLoad", "Value_Log");
+
+    const data = (await getDoc(docRef)).data()
+
+    if(data !== undefined){
+      setCount(data.Uploads)
+    }
+  }
+
+  useEffect(() => {
+    fetchNumber()
+  },[])
 
   async function copyToClipboard(value: string) {
     navigator.clipboard.writeText(value);
@@ -75,6 +91,7 @@ export default function Home() {
         const result = await response.json();
         console.log("Upload successful:", result);
         recordNumber();
+        fetchNumber();
       } else {
         console.error("Upload failed:", response.statusText);
       }
@@ -97,7 +114,7 @@ export default function Home() {
           </p>
 
           <div className="mt-10 bg-[#1F51FF] rounded-t-lg p-1 px-2">
-            <p className="text-white text-sm">Instant Conversion</p>
+            <p className="text-white text-sm">{count.toString()} Files Have Been Hosted</p>
           </div>
           <div className="bg-gray-100 rounded-x-lg rounded-b-lg flex justify-center items-center">
             <input
@@ -139,10 +156,10 @@ export default function Home() {
           </p>
 
           <div className="mt-20">
-            <img
+            <Link href={"https://github.com/RedTotally/quload"}><img
               className="rounded-lg cursor-pointer hover:brightness-[90%] duration-300"
               src="/banner.png"
-            ></img>
+            ></img></Link>
           </div>
         </div>
       </div>

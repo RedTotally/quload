@@ -11,6 +11,18 @@ const nunitoSans = Nunito_Sans({
 export const metadata: Metadata = {
   title: "QuLoad",
   description: "Convert your file to a link.",
+  keywords: [
+    "mass mail",
+    "email",
+    "gmail",
+    "mail sending",
+    "mailing",
+    "mail service",
+    "SMTP",
+    "mass email sending",
+    "SMTP service",
+    "digital marketing",
+  ],
 };
 
 export default function RootLayout({
