@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { initializeApp, getApp, getApps } from "firebase/app";
 import { getFirestore, doc, updateDoc, increment, getDoc } from "firebase/firestore";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import Link from "next/link";
 export default function Home() {
   const [fileName, setFileName] = useState("");
   const [count, setCount] = useState<Number>(0)
+
+  const [copyPopVisibility, setCopyPopVisibility] = useState(false)
 
   const config = {
     apiKey: process.env.NEXT_PUBLIC_APIKEY,
@@ -57,6 +59,11 @@ export default function Home() {
 
   async function copyToClipboard(value: string) {
     navigator.clipboard.writeText(value);
+
+    setCopyPopVisibility(true)
+    setTimeout(() => {
+      setCopyPopVisibility(false)
+    }, 1000);
   }
 
   async function upload(file: File | null) {
@@ -140,6 +147,7 @@ export default function Home() {
 
           <div className="mt-5 flex justify-between items-center bg-gray-100 p-3 rounded-lg">
             <p>https://quload.com/file/{fileName}</p>
+            <div className="flex justify-center items-center">
             <img
               onClick={() =>
                 copyToClipboard(`https://quload.com/file/${fileName}`)
@@ -147,6 +155,8 @@ export default function Home() {
               className="cursor-pointer"
               src="/copy.svg"
             ></img>
+            <p className={copyPopVisibility == true ? "absolute bg-[#1F51FF] mt-[-5em] p-1 px-3 text-xs text-white rounded-lg opacity-100 duration-150" : "absolute bg-[#1F51FF] mt-[-3em] p-1 px-3 text-xs text-white rounded-lg opacity-0 cursor-default duration-150"}>Copied to Clipboard :D</p>
+            </div>
           </div>
 
           <p className="mt-10 text-center text-xs">
