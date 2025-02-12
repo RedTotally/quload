@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { initializeApp, getApp, getApps } from "firebase/app";
 import {
   getFirestore,
@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
-  const [count, setCount] = useState<Number>(0);
+  const [count, setCount] = useState<number>(0);
 
   const [copyPopVisibility, setCopyPopVisibility] = useState(false);
 
