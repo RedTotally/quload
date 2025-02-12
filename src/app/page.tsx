@@ -39,7 +39,7 @@ export default function Home() {
     formData.append("file", renamedFile);
 
     try {
-      const response = await fetch("https://quload.dotwebshosting.com/upload", {
+      const response = await fetch("https://quload.com/upload", {
         method: "POST",
         body: formData,
       });
