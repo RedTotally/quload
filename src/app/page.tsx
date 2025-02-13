@@ -131,7 +131,7 @@ export default function Home() {
               onLetterAnimationComplete={() =>
                 console.log("Animation Complete!")
               }
-              className="text-center font-bold text-3xl lg:text-6xl"
+              className="text-center font-bold text-3xl lg:text-5xl"
             ></SplitText>
           </div>
 
