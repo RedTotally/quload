@@ -10,6 +10,8 @@ import {
   getDoc,
 } from "firebase/firestore";
 import Link from "next/link";
+import Image from "next/image";
+import SplitText from "./components/SplitText";
 
 export default function Home() {
   const [fileName, setFileName] = useState("");
@@ -115,16 +117,53 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center mt-[9em]">
+      <div className="flex justify-center mt-[5em]">
         <div className="lg:w-[60em] px-10">
-          <p className="text-center font-semibold text-3xl lg:text-5xl">
-            We Don&apos;t Upload, We{" "}
-            <span className="font-bold text-[#1F51FF]">QuLoad</span>.
-          </p>
-          <p className="text-center mt-2">
-            Convert a File, Specifically an Image or a Video to a Link in No
-            Time.
-          </p>
+          <div className="flex justify-center">
+            <SplitText
+              text={`We Don't Upload, We <Link>Quload</Link>!`}
+              delay={30}
+              animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
+              animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+              easing="easeOutCubic"
+              threshold={0.2}
+              rootMargin="-50px"
+              onLetterAnimationComplete={() =>
+                console.log("Animation Complete!")
+              }
+              className="text-center font-bold text-3xl lg:text-6xl"
+            ></SplitText>
+          </div>
+
+          <div className="flex justify-center">
+            <SplitText
+              text={`Convert a File, Specifically an Image or a Video to a Link in No Time.`}
+              delay={10}
+              animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
+              animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+              easing="easeOutCubic"
+              threshold={0.2}
+              rootMargin="-50px"
+              onLetterAnimationComplete={() =>
+                console.log("Animation Complete!")
+              }
+              className="text-center text-gray-600 font-semibold mt-3 text-lg"
+            ></SplitText>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="https://www.producthunt.com/posts/quload?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quload"
+              target="_blank"
+            >
+              <Image
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=872014&theme=light&t=1739411635246"
+                alt="QuLoad - Convert a file, specifically an image or a video to a link | Product Hunt"
+                width={250}
+                height={54}
+              />
+            </Link>
+          </div>
 
           <div className="mt-10 bg-[#1F51FF] rounded-t-lg p-1 px-2">
             <p className="text-white text-sm">
