@@ -170,7 +170,7 @@ export default function Home() {
               {count.toString()} Files Have Been Hosted
             </p>
           </div>
-          <div className="bg-gray-100 rounded-x-lg rounded-b-lg flex justify-center items-center">
+          <div className="bg-gray-100 rounded-x-lg rounded-b-lg flex justify-center items-center group">
             <input
               onChange={(event) =>
                 upload(event.target.files ? event.target.files[0] : null)
@@ -180,7 +180,7 @@ export default function Home() {
             ></input>
             <div className="absolute px-20 lg:px-10">
               <div className="flex justify-center">
-                <img className="w-[7em] lg:w-[10em]" src="/file.png"></img>
+                <img className="w-[7em] lg:w-[10em] group-hover:rotate-180 duration-300" src="/file.png"></img>
               </div>
               <p className="text-gray-600 text-center">
                 Drop a file or simply click here, com&apos;n!
