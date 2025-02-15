@@ -180,9 +180,12 @@ export default function Home() {
             ></input>
             <div className="absolute px-20 lg:px-10">
               <div className="flex justify-center">
-                <img className="w-[7em] lg:w-[10em] group-hover:rotate-180 duration-300" src="/file.png"></img>
+                <img
+                  className="w-[7em] lg:w-[10em] group-hover:rotate-180 duration-300"
+                  src="/file.png"
+                ></img>
               </div>
-              <p className="text-gray-600 text-center">
+              <p className="text-gray-600 text-center font-bold">
                 Drop a file or simply click here, com&apos;n!
               </p>
               <p className="text-gray-400 text-xs text-center lg:w-[30em] mt-1">
@@ -219,6 +222,16 @@ export default function Home() {
             you&apos;re struggling with the pronunciation, just remember
             we&apos;re cool, so, &quot;Cool Load&quot;, get it?
           </p>
+
+          <div className="w-full aspect-video mt-20">
+            <video autoPlay muted loop>
+              <source
+                className="w-full h-full rounded-lg"
+                src="/quload-promotion.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
 
           <div className="mt-20">
             <Link href={"https://github.com/RedTotally/quload"}>
