@@ -223,7 +223,7 @@ export default function Home() {
             we&apos;re cool, so, &quot;Cool Load&quot;, get it?
           </p>
 
-          <div className="w-full aspect-video mt-20">
+          <div className="w-full mt-20">
             <video autoPlay muted loop>
               <source
                 className="w-full h-full rounded-lg"
