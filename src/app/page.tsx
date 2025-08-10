@@ -195,9 +195,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-5 justify-between items-center bg-gray-100 p-3 rounded-lg">
+          <div className="block md:flex mt-5 justify-between items-center bg-gray-100 p-3 rounded-lg">
             <p>https://quload.com/file/{fileName}</p>
-            <div className="md:flex justify-center items-center">
+            <div className="flex justify-center items-center">
               <img
                 onClick={() =>
                   copyToClipboard(`https://quload.com/file/${fileName}`)
