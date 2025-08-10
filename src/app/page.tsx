@@ -195,7 +195,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-5 flex justify-between items-center bg-gray-100 p-3 rounded-lg">
+          <div className="mt-5 md:flex justify-between items-center bg-gray-100 p-3 rounded-lg">
             <p>https://quload.com/file/{fileName}</p>
             <div className="flex justify-center items-center">
               <img
